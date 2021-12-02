@@ -12,32 +12,79 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" media="screen" href="styles/main.css" />
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses'],
+          ['2013',  1000,      400],
+          ['2014',  1170,      460],
+          ['2015',  660,       1120],
+          ['2016',  1030,      540]
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0}
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
 </head>
 
 <body>
     <div class="mobile-app">
         <header>
-            <h1><span><img src="imgs/back-arrow.jpg" alt=""> Mutual Funds</span> <img src="imgs/help-icon.jpg" alt="">
+            <h1><span><img src="imgs/back-arrow.jpg" alt=""> Portfolio Analysis</span> <img src="imgs/help-icon.jpg" alt="">
             </h1>
         </header>
         <main>
-            <div class="chart"></div>
+            <div class="chart">
+                <div id="chart_div" style="width: 100%; height: 500px;"></div>
+            </div>
             <div class="performance">
-                <h5>Performance</h5>
-                <ul>
-                    <li>
-                        <span>Period</span>
-                        Till now
-                    </li>
-                    <li>
-                        <span>Returns</span>
-                        Annualised
-                    </li>
-                    <li>
-                        <span>Gain/loss</span>
-                        Total
-                    </li>                                        
-                </ul>
+                <div class="performance-info">
+                    <h5>Performance</h5>
+                    <ul>
+                        <li>
+                            <span>Period</span>
+                            Till now<img src="imgs/down-red-arrow.jpg" alt="">
+                        </li>
+                        <li>
+                            <span>Returns</span>
+                            Annualised<img src="imgs/down-red-arrow.jpg" alt="">
+                        </li>
+                        <li>
+                            <span>Gain/loss</span>
+                            Total
+                        </li>                                        
+                    </ul>
+                </div>
+                <div class="performance-status">
+                    <ul>
+                        <li class="bad-performance">
+                            <img src="imgs/bad-performance.jpg" alt="">
+                            <div>
+                                Your overall performance
+                                <div>&#8377; 1,060,527.9 <span>-9.61%</span></div>
+                            </div>
+                        </li>
+                        <li class="good-performance">
+                            <img src="imgs/good-performance.jpg" alt="">
+                            <div>
+                                Benchmark performance
+                                <div>Nifty 50 <img src="imgs/down-red-arrow.jpg" alt=""><span>8.7%</span></div>
+                            </div>
+                        </li>                        
+                    </ul>
+                </div>
             </div>
         </main>
     </div>
