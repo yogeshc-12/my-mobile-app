@@ -20,17 +20,19 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses'],
-          ['2013',  1000,      400],
-          ['2014',  1170,      460],
-          ['2015',  660,       1120],
-          ['2016',  1030,      540]
+          ['Year', 'Sales'],
+          ['Apr 21',  1000],
+          ['Jul 21',  1170],
+          ['Oct 21',  660]
         ]);
 
         var options = {
-          title: 'Company Performance',
           hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
-          vAxis: {minValue: 0}
+          vAxis: {minValue: 0},
+          series: [
+                {color: '#5fc5fe', visibleInLegend: false}, {}, {},
+                {color: '#ffffff', visibleInLegend: false}
+                ],
         };
 
         var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
@@ -47,7 +49,7 @@
         </header>
         <main>
             <div class="chart">
-                <div id="chart_div" style="width: 100%; height: 500px;"></div>
+                <div id="chart_div" style="width: 100%; height: 300px;"></div>
             </div>
             <div class="performance">
                 <div class="performance-info">

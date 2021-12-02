@@ -564,6 +564,11 @@ li.buy-now a img{
   content: none;
 }
 
+.chart {
+  box-shadow: 0px 1px 3px 1px rgb(230 229 229 / 76%);
+  margin-bottom: 30px;
+}
+
 @media (max-width: 340px) {
   .added-to-cart-msg {
     width: 280px;
